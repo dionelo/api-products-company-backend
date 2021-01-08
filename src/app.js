@@ -1,5 +1,6 @@
 import express from 'express'
 import morgan from 'morgan'
+import cors from 'cors'
 import pack from '../package.json'
 
 import { createRoles } from './libs/initialSetup'
@@ -13,8 +14,14 @@ createRoles()
 
 app.set('pack', pack)
 
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST', 'DELETE', 'PUT'],
+    allowedHeaders: 'Content-Type, Authorization, Origin, X-Requested-With, Accept, x-access-token'
+}))
 app.use(morgan('dev'))
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
 	const p = app.get('pack')

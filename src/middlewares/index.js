@@ -9,5 +9,5 @@ export {
 	isModerator,
 	isAdmin,
 	checkIfRolesExist,
-	checkIfUsernameOrEmailIsDuplicated,
+	checkIfUsernameOrEmailIsDuplicated
 }
